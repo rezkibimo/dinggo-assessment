@@ -27,17 +27,28 @@
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @if(!empty($cars))
             @foreach($cars as $car)
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $car['make'] }} {{ $car['model'] }}</h5>
-                    <p class="card-text">{{ $car['year'] }} - {{ $car['colour'] }}</p>
-                    <p class="card-text">{{ $car['licenseState'] }} - {{ $car['licensePlate'] }}</p>
-                    <form action="{{ url('/quotes') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="licenseState" value="{{ $car['licenseState'] }}">
-                        <input type="hidden" name="licensePlate" value="{{ $car['licensePlate'] }}">
-                        <button type="submit" class="btn btn-primary">Get Quote</button>
-                    </form>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                        <title>Placeholder</title>
+                        <rect width="100%" height="100%" fill="#55595c"></rect>
+                    </svg>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $car['make'] }} {{ $car['model'] }} {{ $car['year'] }} - {{ $car['colour'] }}</h5>
+                        <p class="card-text"><strong>Registration:</strong> {{ $car['licenseState'] }} - {{ $car['licensePlate'] }}</p>
+                        <p class="card-text"><strong>VIN:</strong> {{ $car['vin'] }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <form action="{{ url('/quotes') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="licenseState" value="{{ $car['licenseState'] }}">
+                            <input type="hidden" name="licensePlate" value="{{ $car['licensePlate'] }}">
+                            <button type="submit" class="btn btn-primary">Get Quote</button>
+                        </form>
+                        </div>
+                    </div>
                 </div>
             </div>
             @endforeach
