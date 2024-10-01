@@ -97,26 +97,34 @@ class CarController extends Controller
             $data = json_decode($response->getBody(), true);
 
             if ($data['success'] === 'ok') {
-                $quotes = $data['quotes'];
+                $quotesData = $data['quotes'];
 
                 // Find the car in the database
                 $car = Car::where('license_plate', $licensePlate)->first();
 
                 if ($car) {
-                    // Iterate through each quote and store it in the database
-                    foreach ($quotes as $quote) {
-                        Quote::create([
-                            'car_id'           => $car->id,
-                            'price'            => $quote['price'],
-                            'repairer'         => $quote['repairer'],
-                            'overview_of_work' => $quote['overviewOfWork'],
-                        ]);
+                    // Iterate through each quote and store/update in the database
+                    foreach ($quotesData as $quoteData) {
+                        Quote::updateOrCreate(
+                            [
+                                'car_id'           => $car->id,
+                                'repairer'         => $quoteData['repairer'],
+                                'overview_of_work' => $quoteData['overviewOfWork'],
+                            ],
+                            [
+                                'price' => $quoteData['price'],
+                            ]
+                        );
                     }
                 } else {
                     return back()->withErrors(['Car not found in the database.']);
                 }
 
-                return view('quotes', compact('quotes'));
+                // Pass both quotes and car details to the view
+                return view('quotes', [
+                    'quotes' => $quotesData,
+                    'car'    => $car,
+                ]);
             } else {
                 return back()->withErrors(['API call failed.']);
             }
