@@ -10,37 +10,56 @@
 
 </head>
 
-<body class="container">
-    <h1>Car Quotes</h1>
+<body>
+    <div class="container p-4">
+        <h1 class="mb-3">Car Quotes</h1>
 
-    @if ($errors->any())
-    <div style="color: red;">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
-
-    @if(!empty($quotes))
-    @foreach($quotes as $quote)
-    <div class="card mb-4 rounded-3 shadow-sm">
-        <div class="card-header py-3">
-            <h4 class="my-0 fw-normal">{{ $quote['repairer'] }}</h4>
+        <!-- Display Error Messages -->
+        @if ($errors->any())
+        <div class="error-messages">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         </div>
-        <div class="card-body">
-            <h1 class="card-title pricing-card-title">${{ $quote['price'] }}</h1>
-            <p class="card-text">{{ $quote['overviewOfWork'] }}</p>
-        </div>
-    </div>
-    <!-- Adjust based on the actual structure of your quotes data -->
-    @endforeach
-    @else
-    <p>No quotes found.</p>
-    @endif
+        @endif
 
-    <a href="{{ url('/') }}">Back to My Car List</a>
+        @if(isset($car))
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $car->make }} {{ $car->model }} {{ $car->year }}</li>
+            </ol>
+        </nav>
+        @else
+        <!-- Default Breadcrumb if Car Details are Missing -->
+        <nav aria-label="breadcrumb" class="mb-3">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Quotes</li>
+            </ol>
+        </nav>
+        @endif
+
+        <!-- Display Quotes -->
+        @if(!empty($quotes))
+        @foreach($quotes as $quote)
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">{{ $quote['repairer'] }}</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">${{ $quote['price'] }}</h1>
+                <p class="card-text">{{ $quote['overviewOfWork'] }}</p>
+            </div>
+        </div>
+        <!-- Adjust based on the actual structure of your quotes data -->
+        @endforeach
+        @else
+        <p>No quotes found.</p>
+        @endif
+    </div>
 </body>
 
 </html>
