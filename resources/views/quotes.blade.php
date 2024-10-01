@@ -13,8 +13,9 @@
 <body class="container">
     <h1>Car Quotes</h1>
 
+    <!-- Display Error Messages -->
     @if ($errors->any())
-    <div style="color: red;">
+    <div class="error-messages">
         <ul>
             @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
