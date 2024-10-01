@@ -26,7 +26,7 @@
         @endif
 
         @if(isset($car))
-        <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{ $car->make }} {{ $car->model }} {{ $car->year }}</li>
@@ -34,7 +34,7 @@
         </nav>
         @else
         <!-- Default Breadcrumb if Car Details are Missing -->
-        <nav aria-label="breadcrumb">
+        <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Quotes</li>
