@@ -3,5 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarController;
 
-Route::get('/', [CarController::class, 'index']); // Index page showing car list
-Route::post('/quotes', [CarController::class, 'getQuotes']); // Quotes page
+// Home page: Display the car list
+Route::get('/', [CarController::class, 'index']);
+
+// Quotes page: Handle form submissions to get quotes
+Route::post('/quotes', [CarController::class, 'getQuotes']);
