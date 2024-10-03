@@ -48,15 +48,15 @@
                         <p class="card-text"><strong>VIN:</strong> {{ $car->vin }}</p>
 
                         <div class="mt-auto d-flex justify-content-between align-items-center">
-                            <!-- Edit Button (Functionality to be implemented) -->
+                            <!-- Edit Button (Functionality not implemented since no edit functionality) -->
                             <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                <button type="button" class="btn btn-outline-secondary disabled">Edit</button>
                             </div>
                             <form action="{{ url('/quotes') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="licenseState" value="{{ $car->license_state }}">
                                 <input type="hidden" name="licensePlate" value="{{ $car->license_plate }}">
-                                <button type="submit" class="btn btn-primary btn-sm">Get Quote</button>
+                                <input type="hidden" name="licenseState" value="{{ $car->license_state }}">
+                                <button type="submit" class="btn btn-primary">Get Quote</button>
                             </form>
                         </div>
                     </div>

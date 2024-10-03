@@ -1,5 +1,21 @@
 # dinggo-assessment
 
+## Description
+
+This project is created using Laravel's default starter; hence, there might be lots of unnecessary code.
+
+The database schema can be found in the `database/migrations` directory.
+
+Most of the code is written in the `app`, `resources`, and `routes` directories.
+
+### The goal of this project is to follow:
+
+-   [x] Use https://app.dev.aws.dinggo.com.au/phptest/cars to get a list of cars
+-   [x] Save this list into your database
+-   [x] Using this list of cars submit one to https://app.dev.aws.dinggo.com.au/phptest/quotes to return 2 sample quotes
+-   [x] Save these quotes into the database
+-   [x] Create a simple html/css page to display these quotes
+
 ## Prerequisites
 
 Before running the application, ensure you have the following installed on your system:
@@ -8,28 +24,34 @@ Before running the application, ensure you have the following installed on your 
 -   **Composer**: Dependency management for PHP
 -   **Docker** (optional, if you choose to use Docker)
 
-For managing PHP versions easily, you can use [Herd](https://herd.laravel.com/).
+For managing PHP versions & environment for the Laravel development, you can use [Herd](https://herd.laravel.com/).
 
 ## How to Run the Application
 
 You can run the application using either **PHP Artisan** or **Docker**. Follow the steps below based on your preferred method.
 
-### Using PHP Artisan
+### Using PHP Artisan (Recommended)
 
 1. **Copy the Environment File**
 
     Duplicate the provided ENV (via email)
 
-2. **Run the Development Server**
-
-    ```
-    php artisan serve
-    ```
-
-Dependencies: After copying the .env file, you might need to install project dependencies using Composer:
+2. **install project dependencies using Composer**
 
     ```
     composer install
+    ```
+
+3. **Built the initial sqlite database**
+
+    ```
+    php artisan migrate
+    ```
+
+4. **Run the Development Server**
+
+    ```
+    php artisan serve
     ```
 
 ### Using Docker
@@ -46,7 +68,7 @@ Build the Docker image with the specified tag:
     docker build -t dinggo-assessment/laravel:0.1 .
     ```
 
-2. **Run the Docker Container**
+3. **Run the Docker Container**
 
 Start the Docker container, mapping port 8080 on your machine to port 80 in the container:
 

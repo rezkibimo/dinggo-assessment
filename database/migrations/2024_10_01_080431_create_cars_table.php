@@ -20,7 +20,7 @@ class CreateCarsTable extends Migration
             $table->string('colour');
             $table->string('make');
             $table->string('model');
-            $table->timestamps(); // created_at and updated_at
+            $table->timestamps(); 
         });
     }
 
