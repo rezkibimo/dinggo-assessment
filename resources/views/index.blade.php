@@ -48,7 +48,7 @@
                         <p class="card-text"><strong>VIN:</strong> {{ $car->vin }}</p>
 
                         <div class="mt-auto d-flex justify-content-between align-items-center">
-                            <!-- Edit Button (Functionality to be implemented) -->
+                            <!-- Edit Button (Functionality not implemented since no edit functionality) -->
                             <div class="btn-group">
                                 <button type="button" class="btn btn-outline-secondary disabled">Edit</button>
                             </div>

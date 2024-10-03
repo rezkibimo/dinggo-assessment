@@ -33,7 +33,7 @@
             </ol>
         </nav>
         @else
-        <!-- Default Breadcrumb if Car Details are Missing -->
+        <!-- Default Breadcrumb if Car Detail are Missing or not implemented properly -->
         <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
@@ -42,7 +42,7 @@
         </nav>
         @endif
 
-        <!-- Display Quotes -->
+        <!-- Display Car Fix Quotes -->
         @if(!empty($quotes))
         @foreach($quotes as $quote)
         <div class="card mb-4 rounded-3 shadow-sm">
@@ -54,7 +54,6 @@
                 <p class="card-text">{{ $quote['overviewOfWork'] }}</p>
             </div>
         </div>
-        <!-- Adjust based on the actual structure of your quotes data -->
         @endforeach
         @else
         <p>No quotes found.</p>
