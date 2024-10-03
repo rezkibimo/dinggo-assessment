@@ -30,7 +30,7 @@ For managing PHP versions & environment for the Laravel development, you can use
 
 You can run the application using either **PHP Artisan** or **Docker**. Follow the steps below based on your preferred method.
 
-### Using PHP Artisan
+### Using PHP Artisan (Recommneded)
 
 1. **Copy the Environment File**
 
