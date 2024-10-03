@@ -68,7 +68,7 @@ Build the Docker image with the specified tag:
     docker build -t dinggo-assessment/laravel:0.1 .
     ```
 
-2. **Run the Docker Container**
+3. **Run the Docker Container**
 
 Start the Docker container, mapping port 8080 on your machine to port 80 in the container:
 
